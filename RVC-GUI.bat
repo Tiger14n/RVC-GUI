@@ -3,6 +3,8 @@
 REM Get the path of the script's directory
 set "scriptDir=%~dp0"
 
+REM Please add batch converting :)
+
 REM Set the path to the Python runtime folder
 set "runtimeFolder=%scriptDir%runtime"
 
