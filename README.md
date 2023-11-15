@@ -1,9 +1,9 @@
 <div align="center">
 
-<h1>RVC GUI<br><br>
+<h1>RVC GUI MODIFICADO PARA MAC-OS INTEL 🇧🇷<br><br>
   
-For audio file inference only
 
+em breve para M1/M2/M3
   <br>
 
   
@@ -15,36 +15,35 @@ For audio file inference only
  
 
   
-## GUI
+## INTERFACE
 
-![GUI](https://github.com/Tiger14n/RVC-GUI/raw/main/docs/GUI.JPG)
+![GUI](https://github.com/jhonnytech90/RVC-GUI/blob/main/docs/RVC_GUI_MAC-OS.png)
  <br><br>
   
-## Direct setup for Windows users
-## [Windows-pkg](https://github.com/Tiger14n/RVC-GUI/releases/tag/Windows-pkg)
-  
 <br><br>
-## Preparing the environment
+## PREPARANDO SUA MAQUINA
 
 
-* Install Python version +3.8 if you have not:
+* INSTALE O PYTHON VERSÃO +3.8:
+* DONWLOAD https://www.python.org/downloads/
+  Caso tiver problemas instale outras versões
 
-* Execute these commands
+* EXECUTE ESTES COMANDOS
 
-Windows with Nvidia cards
-```bash
-python -m pip install -U pip setuptools wheel
-pip install -U torch torchaudio --index-url https://download.pytorch.org/whl/cu118
-pip install -r requirements.txt
-```
-Other
 ```
 python -m pip install -U pip setuptools wheel
 pip install -U torch torchaudio 
 pip install -r requirements.txt
 ```
 
-Apple silicon Macs fix
+* SE TIVER PROBLEMAS EXECUTE ESTES
+```
+python3 -m pip install -U pip setuptools wheel
+pip3 install -U torch torchaudio 
+pip3 install -r requirements.txt
+```
+
+* CORRIJA PROBLEMAS DO APPLE SILICON COM ESTES COMANDOS(M1/M2/M3)
 ```
 pip install --pre torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/nightly/cpu
 
@@ -52,25 +51,26 @@ export PYTORCH_ENABLE_MPS_FALLBACK=1
 ```
 <br>
 
-* Downlaod [hubert_base.pt](https://huggingface.co/lj1995/VoiceConversionWebUI/resolve/main/hubert_base.pt/) and place it in the root folder
+* BAIXE [hubert_base.pt](https://huggingface.co/lj1995/VoiceConversionWebUI/resolve/main/hubert_base.pt/) E COLE NA PASTA RAIZ DO PROGRAMA
 
 <br>
  
-* Then use this command to start RVC GUI:
+* USE ESTES COMANDOS PARA INICIAR O RVC GUI NO MACOS:
 ```bash
-python rvcgui.py
+cd (ARRASTE A PASTA DO RVC PARA DENTRO DO TERMINAL OU COLE O ENDEREÇO DA LOCALIZAÇÃO DA PASTA)
 ```
-Or run this file on windows
-```
-RVC-GUI.bat
+ POR EXEMPLO : ( cd /user/desktop/RVC_GUI/) e em seguida:
+```bash
+python3 rvcgui.py
 ```
 
-# Loading models
-use the import button to import a model from a zip file, 
-* The .zip must contain the ".pth" weight file. 
-* The .zip is recommended to contain the feature retrieval files ".index"
 
-Or place the model manually in root/models
+# CARREGANDO MODELOS
+use o botão importar para importar um modelo de um arquivo zip,
+* O .zip deve conter o arquivo de peso ".pth".
+* O .zip é recomendado para conter os arquivos de recuperação de recursos ".index"
+
+Ou coloque o modelo manualmente em root/models
 ```
 models
 ├───Person1
@@ -83,16 +83,4 @@ models
     └───...
 ````
 <br>
-
-
-<br> 
-
-### How to get models?.
-* Join the[ AI Hub](https://discord.gg/aihub) Discord 
-* [Community Models on HuggingFace](https://huggingface.co/QuickWick/Music-AI-Voices/tree/main) by Wicked aka QuickWick
-
-<br>
-
-K7#4523
-
 
