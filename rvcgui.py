@@ -64,14 +64,15 @@ def extract_model_from_zip(zip_path, output_dir):
     
 def play_audio(file_path):
     if sys.platform == 'win32':
-        audio_file = os.path.abspath(file_path)
-        subprocess.call(['start', '', audio_file], shell=True)
+        subprocess.call(['start', '', file_path], shell=True)
     elif sys.platform == 'darwin':
-        audio_file = 'path/to/audio/file.wav'
-        subprocess.call(['open', audio_file])
+        subprocess.call(['open', file_path])
     elif sys.platform == 'linux':
-        audio_file = 'path/to/audio/file.wav'
-        subprocess.call(['xdg-open', audio_file])
+        subprocess.call(['xdg-open', file_path])
+
+    else:
+        print("Arquivo de áudio não encontrado.")
+
 
 def get_full_path(path):
     return os.path.abspath(path)
@@ -325,31 +326,32 @@ def browse_zip():
     extract_model_from_zip(zip_file, models_dir)
     refresh_model_list()
     
-def get_output_path(file_path):
-    
-    if not os.path.exists(file_path):
-        # change the file extension to .wav
-        
-        return file_path  # File path does not exist, return as is
 
-    # Split file path into directory, base filename, and extension
+
+
+
+
+def get_output_path(file_path):
+    output_dir = os.path.join(now_dir, "output")
+
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+
+    if not os.path.exists(file_path):
+        return os.path.join(output_dir, "output.wav")
+
     dir_name, file_name = os.path.split(file_path)
     file_name, file_ext = os.path.splitext(file_name)
 
-    # Initialize index to 1
     index = 1
 
-    # Increment index until a new file path is found
     while True:
-        new_dir = f"{dir_name}\\{chosenOne}\\"
-        new_file_name = f"{file_name}_RVC_{index}{file_ext}"
-        new_file_path = os.path.join(new_dir, new_file_name)
+        new_file_name = f"{file_name}_RVC_{index}.wav"
+        new_file_path = os.path.join(output_dir, new_file_name)
+
         if not os.path.exists(new_file_path):
-            # change the file extension to .wav
-            if not os.path.exists(new_dir):
-                os.makedirs(new_dir)
-            new_file_path = os.path.splitext(new_file_path)[0] + ".wav"
-            return new_file_path  # Found new file path, return it
+            return new_file_path
+
         index += 1
     
 def on_button_click():
