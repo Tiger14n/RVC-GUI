@@ -4,6 +4,7 @@ from tkinter import filedialog
 import soundfile as sf
 import tkinter as tk
 import customtkinter as ctk
+import pathlib
 
 import os
 import sys
@@ -63,15 +64,15 @@ def extract_model_from_zip(zip_path, output_dir):
     
     
 def play_audio(file_path):
+    audio_file = pathlib.Path(file_path).absolute()
     if sys.platform == 'win32':
-        audio_file = os.path.abspath(file_path)
         subprocess.call(['start', '', audio_file], shell=True)
     elif sys.platform == 'darwin':
-        audio_file = 'path/to/audio/file.wav'
         subprocess.call(['open', audio_file])
     elif sys.platform == 'linux':
-        audio_file = 'path/to/audio/file.wav'
         subprocess.call(['xdg-open', audio_file])
+    else:
+        raise ValueError(f'Unexpected platform {sys.platform}')
 
 def get_full_path(path):
     return os.path.abspath(path)
